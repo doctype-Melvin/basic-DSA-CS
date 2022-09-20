@@ -36,6 +36,17 @@ export function fibs1(n) {
     return result
 }
 
+export function fibs2(n) {
+    let result = []; // Empty result array
+    for (let i = 0; result.length < n; i++) { // Limit array length to n
+        if (i > 1) { // Indices greater than 1
+            result[i] = result[i-1] + result[i-2] // Will be set by fibonacci formula
+        } else {
+            result[i] = i // Indices 0 and 1 are equal to i
+        }
+    }
+    return result
+}
 ////Fibonacci section end
 
 export function factorial(n) { // Returns factorial of n
