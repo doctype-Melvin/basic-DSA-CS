@@ -99,6 +99,84 @@ const linkedList = () => { // Factory function to create lists
             return false
         }
     }
+
+    const find = (value) => {// Returns index of node
+        if (contains(value)){
+            let currentIndex = 0
+            let currentNode = head
+            while(currentNode.value !== value) {
+                currentIndex++
+                currentNode = currentNode.next
+            }
+            console.log(currentIndex)
+            return currentIndex
+        }
+        return null
+    }
+
+    const toString = () => { // Prints node values
+        let string = ""
+        let currentNode = head
+        if (length === 0) {
+            console.log("There are no items")
+            return null
+        }else{
+            while (currentNode){
+                string += `(${currentNode.value}) -> `
+                currentNode = currentNode.next
+            }
+            console.log(string + "null")
+            return string + "null"
+        }
+    }
+
+    const insertAt = (value, index) => { // Inserts new node at given index
+        let currentNode = head
+        let currentIndex = 0
+        let newNode = Node(value)
+
+        if (index < 0 || index > length) {
+            console.log("Index out of range")
+            return "Index out of range"
+        }
+        if (index === 0) {
+            newNode.next = head
+            head = newNode
+        }else{
+            let previousNode
+            while (currentIndex < index) {
+                currentIndex++
+                previousNode = currentNode
+                currentNode = currentNode.next
+            }
+            previousNode.next = newNode
+            newNode.next = currentNode
+        }
+        length++
+    }
+
+    const removeAt = (index) => { // Removes list item at given index
+        let currentNode = head
+        let currentIndex = 0
+        if (index < 0 || index > length) {
+            console.log("Index out of range")
+            return "Index out of range"
+        }
+        if (index === 0) {
+            currentNode.next = atIndex(index).next
+            head = currentNode.next
+        }else {
+            let previousNode
+            while (currentIndex < index) {
+                currentIndex++
+                previousNode = currentNode
+                currentNode = currentNode.next
+            }
+            previousNode.next = currentNode.next
+        }
+        length--
+    }
+
     return {
         length,
         Node,
@@ -109,7 +187,11 @@ const linkedList = () => { // Factory function to create lists
         printTail,
         atIndex,
         pop,
-        contains
+        contains,
+        find,
+        toString,
+        insertAt,
+        removeAt
     }
 }
 
@@ -117,4 +199,9 @@ let list = linkedList()
 list.append("One")
 list.append("Two")
 list.prepend("Zero")
-list.contains("One")
+list.insertAt("Three", 3)
+list.size()
+list.toString()
+list.removeAt(2)
+list.toString()
+list.size()
