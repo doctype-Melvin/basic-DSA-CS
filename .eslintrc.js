@@ -12,7 +12,9 @@ module.exports = {
         "sourceType": "module"
     },
     "rules": {
-        "semi": ["warn", "always"],
-        "quotes": ["warn", "double"]
+        "semi": ["warn", "never"],
+        "quotes": ["warn", "double"],
+        "init-declarations": ["error", "always"],
+        
     }
-};
+}
