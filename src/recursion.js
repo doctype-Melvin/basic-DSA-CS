@@ -22,10 +22,21 @@ export function sumRange(n, total = 0){ // Sum up range via recursion
         return sumRange(n-1, total+n)
     }
 }
+////Fibonacci section start
 
 export function fib(n) { // Returns Fibonacci number at position n in sequence
     return n <= 1 ? n : fib(n-1) + fib(n-2)
 }
+
+export function fibs1(n) {
+    let result = [0, 1]; // First two numbers in sequence 
+    for (let i = 2; i < n; i++) {
+      result[i] = (result[i-1] + result[i-2]) // Basic fibonacci formula
+    }
+    return result
+}
+
+////Fibonacci section end
 
 export function factorial(n) { // Returns factorial of n
     return n === 1 ? n : n*factorial(n-1)
