@@ -57,6 +57,10 @@ export function fibs3(n) { // Recursive
         return temp.slice(0, n) // Limit result array to n integers 
     }
 }
+
+export function fibs4(n) {
+    return (n < 1) ? 0 : (n < 2) ? 1 : fibs4(n-1) + fibs4(n-2)
+}
 ////Fibonacci section end
 
 export function factorial(n) { // Returns factorial of n
