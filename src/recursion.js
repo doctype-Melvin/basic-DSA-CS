@@ -85,3 +85,17 @@ export function contains(obj, value) { // This fn combines the for..in loop with
     return false // If there's no match return false
     }
 /////////////////////////////
+
+export function totalIntegers(array){
+    if (array.length === 0) return 0; // If there are no elements return 0
+
+    let result = 0;
+    let partial = array.shift(); // store the first available element
+    if (Array.isArray(partial)) { // if the element is an array
+        result += totalIntegers(partial) // call again the function with the element
+    } if (Number.isInteger(partial)) { // if the element is a number/integer
+        result += 1 // increment result value
+    }
+    return result + totalIntegers(array) // calls the fn again with the partial array
+    // the last partial array has a length of 0 and triggers the base case
+}
