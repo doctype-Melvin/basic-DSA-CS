@@ -113,3 +113,8 @@ export function SumSquares(val) {
 
     return result += SumSquares(val) // adds all recursive calls
 }
+
+export function replicate(a, b) { // Creates an array of integers -- a is being replicated b times
+    if (a <= 0) return []
+    return [b].concat(replicate(a-1, b))
+    }
