@@ -99,3 +99,17 @@ export function totalIntegers(array){
     return result + totalIntegers(array) // calls the fn again with the partial array
     // the last partial array has a length of 0 and triggers the base case
 }
+
+export function SumSquares(val) {
+    if (val.length === 0) return 0; // Base case -- if array has no elements return 0
+    let result = 0;
+    let partial = val.shift(); // Grabs first element of array
+    if (Array.isArray(partial)) { // if first element of array is an array 
+        result += SumSquares(partial) // recursively call fn with partial array and add to result
+    }
+    if (Number.isInteger(partial)) { // if first element of array is an integer
+        result += partial*partial // add the square of integer to result
+    }
+
+    return result += SumSquares(val) // adds all recursive calls
+}
