@@ -47,6 +47,16 @@ export function fibs2(n) {
     }
     return result
 }
+
+export function fibs3(n) { // Recursive
+    if (n === 1) { // Base case -- if n = 1 return an array with the first two integers in sequence
+        return [0, 1]
+    } else {
+        let temp = fibs3(n-1) // 
+        temp.push(temp[temp.length-1] + temp[temp.length-2]) // Push fibonacci formula of current array
+        return temp.slice(0, n) // Limit result array to n integers 
+    }
+}
 ////Fibonacci section end
 
 export function factorial(n) { // Returns factorial of n
