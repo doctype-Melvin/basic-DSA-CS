@@ -51,3 +51,37 @@ export function all(array, cb) { // Recursive fn to pass each array item to a ca
         return false;
     }
 }
+
+export function productOfArray(array) { // Recursive call to multiply all array items
+    if (array.length === 0) return 1
+    
+    return array.shift() * productOfArray(array)
+}
+
+//////////////////////////////
+var nestedObject = {
+    data: {
+        info: {
+            stuff: {
+                thing: {
+                    moreStuff: {
+                        magicNumber: 44,
+                        something: 'foo2'
+                    }
+                }
+            }
+        }
+    }
+}
+
+
+export function contains(obj, value) { // This fn combines the for..in loop with recursion
+    for (let key in obj) { // Iterate over all the objects keys
+        if (typeof obj[key] === 'object'){ // If the key's value holds an object
+            return contains(obj[key], value) // use recursion to access the nested object
+        }
+        if (obj[key] === value) return true // If the key's value matches the value return true
+    }
+    return false // If there's no match return false
+    }
+/////////////////////////////
