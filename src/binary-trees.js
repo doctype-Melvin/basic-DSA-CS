@@ -50,8 +50,8 @@ const removeDupes = (arr) => {
 
 let arr = [14, 2, 8, 2, 2, 549, 1, 3, 17]
 
-console.log(removeDupes(mergeSort(arr)))
-// let n = arr.length
-// root = arrayToBST(arr, 0, n - 1)
-// console.log("Preorder traversal of constructed BST<br>")
-// preOrder(root)
+let sorted = mergeSort(removeDupes(arr))
+console.log(sorted)
+let n = sorted.length
+root = arrayToBST(sorted, 0, n - 1)
+preOrder(root)
