@@ -1,57 +1,54 @@
-const Node = (data) => { //Fn returns obj with data, left and right property
-    return {
-        data,
-        left: null,
-        right: null
+// This program will create a balanced binary search tree
+// Functions created:
+// Node -- factory fn to create nodes
+// Tree -- factory fn to create root nodes
+// buildTree -- fn that turns array into balanced binary tree and returns level 0 root node 
+// prettyPring -- fn that visualizes binary search tree
+// insert and delete -- methods to insert and delete nodes
+// find -- method to find a given value
+// levelOrder -- method to traverse the tree in breadth-first level order
+// order -- should traverse the tree in depth-first order (inorder, preorder, postorder)
+// height -- should return the height of a given node
+// depth -- should return the depth of a given node
+// isBalanced -- balance check of tree where heights of branches do not differ more than 1
+// rebalance -- uses traversal to rebalance an unbalanced tree
+
+// Array creation and organisation
+// Create random array
+const makeArray = (num) => {
+    let array = []
+    const random = () => Math.floor(Math.random()*255)
+    while (array.length < num) {
+        array.push(random())
     }
+    return array
 }
 
-let root = null // Variable for the root node
 
-const arrayToBST = (arr, start, end) => { // Recursive fn to set a new node or leaf respectively
-    if (start > end) return null
-    let middle = parseInt((start + end) / 2)
-    let newNode = Node(arr[middle])
-    newNode.left = arrayToBST(arr, start, middle - 1)
-    newNode.right = arrayToBST(arr, middle + 1, end)
-    return newNode
+//MergeSort fn as repitition of previous lessons
+// input === array
+const MergeSort = (input) => {
+if (input.length <= 1) return input
+let left = input.splice(0, (input.length/2))
+return Merge(MergeSort(left), MergeSort(input))
 }
 
-const preOrder = (node) => { // Prints BST in preorder traversal
-    if (node == null) return
-    console.log(node.data + " ")
-    preOrder(node.left)
-    preOrder(node.right)
-}
-
-const mergeSort = (arr) => {
-if (arr.length <= 1) return arr
-let left = arr.splice(0, (arr.length/2))
-return merge(mergeSort(left), mergeSort(arr))
-}
-
-const merge = (a, b) => {
-    let result = []
+const Merge = (a, b) => {
+let result = []
 while (a.length > 0 && b.length > 0){
     if (a[0] < b[0]){
         result.push(a.shift())
-    }else {
+    }else{
         result.push(b.shift())
     }
 }
 return [...result, ...a, ...b]
 }
 
-const removeDupes = (arr) => {
-    return arr.filter((item, index) => {
-        return arr.indexOf(item) === index
+// Remove duplicates
+const cleanArray = (input) => {
+    return input.filter((item, index) => {
+        return input.indexOf(item) === index
     })
 }
 
-let arr = [14, 2, 8, 2, 2, 549, 1, 3, 17]
-
-let sorted = mergeSort(removeDupes(arr))
-console.log(sorted)
-let n = sorted.length
-root = arrayToBST(sorted, 0, n - 1)
-preOrder(root)
