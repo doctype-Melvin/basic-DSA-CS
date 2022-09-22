@@ -1,38 +1,25 @@
-// This program will create a balanced binary search tree
-// Functions created:
-// Node -- factory fn to create nodes
-// Tree -- factory fn to create root nodes
-// buildTree -- fn that turns array into balanced binary tree and returns level 0 root node 
-// prettyPring -- fn that visualizes binary search tree
-// insert and delete -- methods to insert and delete nodes
-// find -- method to find a given value
-// levelOrder -- method to traverse the tree in breadth-first level order
-// order -- should traverse the tree in depth-first order (inorder, preorder, postorder)
-// height -- should return the height of a given node
-// depth -- should return the depth of a given node
-// isBalanced -- balance check of tree where heights of branches do not differ more than 1
-// rebalance -- uses traversal to rebalance an unbalanced tree
-
 // Array creation and organisation
 
 //MergeSort fn as repitition of previous lessons
 // input === array
 const MergeSort = (input) => {
-if (input.length <= 1) return input
-let left = input.splice(0, (input.length/2))
-return Merge(MergeSort(left), MergeSort(input))
+
+    if (input.length <= 1) return input
+    let left = input.splice(0, (input.length/2))
+    return Merge(MergeSort(left), MergeSort(input))
 }
 
 const Merge = (a, b) => {
-let result = []
-while (a.length > 0 && b.length > 0){
-    if (a[0] < b[0]){
-        result.push(a.shift())
-    }else{
-        result.push(b.shift())
+
+        let result = []
+    while (a.length > 0 && b.length > 0){
+        if (a[0] < b[0]){
+            result.push(a.shift())
+        }else{
+            result.push(b.shift())
+        }
     }
-}
-return [...result, ...a, ...b]
+    return [...result, ...a, ...b]
 }
 
 // Remove duplicates
@@ -87,12 +74,32 @@ const Tree = (array) => {
         if (root.data < value) return search(root.right, value)
         return search(root.left, value)
     }
+
+    const insertNode = (root, value) => {
+        if (root === null) {
+            root = Node(value)
+            return root
+        }
+        if (value < root.data) {
+            root.left = insertNode(root.left, value)
+        } else if (value > root.data) {
+            root.right = insertNode(root.right, value)
+        }
+        return root
+    }
     return {
+        Node,
         root,
         prettyPrint,
-        search
+        search,
+        insertNode
     }
 }
 
-let fristTree = Tree(polishedArray([1, 54, 4, 3, 2, 19]))
-console.log(fristTree.prettyPrint(fristTree.root))
+let fristTree = Tree(polishedArray([]))
+//console.log(fristTree.root)
+//console.log(fristTree.search(fristTree.root, 54))
+console.log(fristTree.insertNode(fristTree.root, 1233))
+console.log(fristTree.root)
+
+// console.log(fristTree.prettyPrint(fristTree.root))
