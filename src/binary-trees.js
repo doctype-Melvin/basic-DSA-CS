@@ -14,16 +14,6 @@
 // rebalance -- uses traversal to rebalance an unbalanced tree
 
 // Array creation and organisation
-// Create random array
-const makeArray = (num) => {
-    let array = []
-    const random = () => Math.floor(Math.random()*255)
-    while (array.length < num) {
-        array.push(random())
-    }
-    return array
-}
-
 
 //MergeSort fn as repitition of previous lessons
 // input === array
@@ -52,3 +42,57 @@ const cleanArray = (input) => {
     })
 }
 
+// Create random array
+const makeArray = (num) => {
+    let array = []
+    const random = () => Math.floor(Math.random()*255)
+    while (array.length < num) {
+        array.push(random())
+    }
+    return cleanArray(MergeSort(array))
+}
+
+let taskArray = makeArray(10)
+
+// Tree module that holds all methods and fn
+const Tree = (array) => {
+
+        // Node factory
+    const Node = (data) => {
+        return {
+            data,
+            left: null,
+            right: null
+        }
+    }
+
+        //buildTree fn
+    const buildTree = (arr, start, end) => {
+        if(start > end) return null
+        let middle = parseInt((start + end) / 2)
+        let newNode = Node(arr[middle])
+        newNode.left = buildTree(arr, start, middle - 1)
+        newNode.right = buildTree(arr, middle + 1, end)
+        return newNode
+    }
+
+    let root = buildTree(array, 0, array.length - 1)
+        
+    // Pretty print - visual representation of the tree in console
+    const prettyPrint = (node, prefix = "", isLeft = true) => {
+        if (node.right !== null) {
+            prettyPrint(node.right, `${prefix}${isLeft ? "|  " : "   "}`, false)
+        }
+        console.log(`${prefix}${isLeft ? "└── " : "┌── "}${node.data}`)
+        if (node.left !== null) {
+            prettyPrint(node.left, `${prefix}${isLeft ? "   " : "|  "}`, true)
+        }
+    }
+
+    return {
+        root,
+        prettyPrint
+    }
+}
+let first = Tree(taskArray)
+console.log(first.prettyPrint(first.root), taskArray)
