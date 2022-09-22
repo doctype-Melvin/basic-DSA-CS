@@ -42,17 +42,9 @@ const cleanArray = (input) => {
     })
 }
 
-// Create random array
-const makeArray = (num) => {
-    let array = []
-    const random = () => Math.floor(Math.random()*255)
-    while (array.length < num) {
-        array.push(random())
-    }
-    return cleanArray(MergeSort(array))
+function polishedArray(arr){
+    return MergeSort(cleanArray(arr))
 }
-
-let taskArray = makeArray(10)
 
 // Tree module that holds all methods and fn
 const Tree = (array) => {
@@ -89,10 +81,18 @@ const Tree = (array) => {
         }
     }
 
+    // Search a value
+    const search = (root, value) => {
+        if (root === null || root.data === value) return root
+        if (root.data < value) return search(root.right, value)
+        return search(root.left, value)
+    }
     return {
         root,
-        prettyPrint
+        prettyPrint,
+        search
     }
 }
-let first = Tree(taskArray)
-console.log(first.prettyPrint(first.root), taskArray)
+
+let fristTree = Tree(polishedArray([1, 54, 4, 3, 2, 19]))
+console.log(fristTree.prettyPrint(fristTree.root))
