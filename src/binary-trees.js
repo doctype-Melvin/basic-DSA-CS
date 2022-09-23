@@ -29,6 +29,7 @@ const cleanArray = (input) => {
     })
 }
 
+//Final sorted array without dupes
 function polishedArray(arr){
     return MergeSort(cleanArray(arr))
 }
@@ -78,6 +79,7 @@ const Tree = (array) => {
     const insertNode = (root, value) => {
         if (root === null) {
             root = Node(value)
+            console.log(root)
             return root
         }
         if (value < root.data) {
@@ -99,7 +101,10 @@ const Tree = (array) => {
 let fristTree = Tree(polishedArray([]))
 //console.log(fristTree.root)
 //console.log(fristTree.search(fristTree.root, 54))
-console.log(fristTree.insertNode(fristTree.root, 1233))
+console.log(fristTree)
 console.log(fristTree.root)
-
+console.log(fristTree.insertNode(fristTree.root, 1233))
+console.log(fristTree.insertNode(fristTree.root, 4))
+console.log(fristTree.root)
+console.log(fristTree)
 // console.log(fristTree.prettyPrint(fristTree.root))
