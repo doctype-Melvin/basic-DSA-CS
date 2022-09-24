@@ -1,4 +1,7 @@
-const Tree = () => {
+const Tree = (array) => {
+  let root = null
+
+  if(array) root = buildTree(array, 0, array.length-1)
 
     function makeNode(key, left = null, right = null) {
       return {
@@ -17,7 +20,6 @@ const Tree = () => {
       return node
     }
     
-    let root = null
 
     function insert(key) {
       let newNode = makeNode(key)
@@ -43,6 +45,86 @@ const Tree = () => {
       }
   }
 
+    function remove(key){
+      root = removeNode(root, key)
+    }
+
+    function removeNode(node, key){
+      if (node === null) return null
+      if (key < node.key) {
+        node.left = removeNode(node.left, key)
+        return node
+      }
+      if (key > node.key) {
+        node.right = removeNode(node.right, key)
+        return node
+      }
+      if (node.left === null && node.right === null){
+        node = null
+        return node
+      }
+      if (node.left === null) {
+        node = node.right
+        return node
+      } else if (node.right === null) {
+        node = node.left
+        return node
+      }
+      let aux = findMinNode(node.right)
+      node.key = aux.key
+
+      node.right = removeNode(node.right, aux.key)
+      return node
+    }
+
+    function inorder(node){
+      if (node !== null)
+      {
+        inorder(node.left)
+        console.log(node.key)
+        inorder(node.right)
+      }
+    }
+
+    function preorder(node){
+      if (node !== null){
+        console.log(node.key)
+        preorder(node.left)
+        preorder(node.right)
+      }
+    }
+
+    function postorder(node){
+      if (node !== null) {
+        postorder(node.left)
+        postorder(node.right)
+        console.log(node.key)
+      }
+    }
+
+    function findMinNode(node){
+      if (node.left === null){
+        return node
+      }else{
+        return findMinNode(node.left)
+      }
+    }
+
+    function getRootNode(){
+      return root
+    }
+
+    function search(node, key) {
+      if (node === null){
+        return null
+      }else if (key < node.key){
+        return search(node.left, key)
+      }else if (key > node.key){
+        return search(node.right, key)
+      }
+      return node
+    }
+
     function prettyPrint(node, prefix = "", isLeft = true) {
         if(node === null) return
         if (node.right !== null) {
@@ -58,11 +140,21 @@ const Tree = () => {
         makeNode,
         buildTree,
         prettyPrint,
-        insert     
+        insert,
+        remove,
+        inorder,
+        preorder,
+        postorder,
+        findMinNode,
+        getRootNode,
+        search
     }
 }
 
-let bst = Tree()
+let bst = Tree([1, 2, 3, 4])
+bst.insert(5)
+bst.remove(3)
+console.log(bst.prettyPrint(bst.getRootNode()))
 
 
 function randomArray(length){
