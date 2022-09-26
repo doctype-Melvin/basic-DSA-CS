@@ -125,6 +125,29 @@ const Tree = (array) => {
       return node
     }
 
+    function levelOrder(root) {
+      if (root === null) return []
+      let result = []
+      let queue = [root]
+
+      while (queue.length > 0) {
+        let temp = []
+        let n = queue.length
+        
+        for (let i = 0; i < n; i++) {
+          let node = queue.pop()
+          temp.push(node.key)
+          if (node.left) {
+            queue.unshift(node.left)
+          }
+          if (node.right) {
+            queue.unshift(node.right)
+          }
+        }
+        result.push(temp)
+      }
+      return result
+    }
     function prettyPrint(node, prefix = "", isLeft = true) {
         if(node === null) return
         if (node.right !== null) {
@@ -134,6 +157,7 @@ const Tree = (array) => {
         if (node.left !== null) {
           prettyPrint(node.left, `${prefix}${isLeft ? "    " : "│   "}`, true)
         }
+
       }
 
     return {
@@ -147,14 +171,24 @@ const Tree = (array) => {
         postorder,
         findMinNode,
         getRootNode,
-        search
+        search,
+        root,
+        levelOrder
     }
 }
 
-let bst = Tree([1, 2, 3, 4])
+let bst = Tree()
 bst.insert(5)
-bst.remove(3)
+bst.insert(6)
+bst.insert(1)
+bst.insert(8)
+bst.remove(6)
+bst.insert(54)
+bst.insert(30)
+bst.insert(69)
+console.log(bst.search(bst.getRootNode(), 8))
 console.log(bst.prettyPrint(bst.getRootNode()))
+console.log(bst.levelOrder(bst.getRootNode()))
 
 
 function randomArray(length){
