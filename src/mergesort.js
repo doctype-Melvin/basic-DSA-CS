@@ -1,4 +1,4 @@
-const array = [211, 4, 5, 29, 57, 40, 17, 99]
+// const array = [211, 4, 5, 29, 57, 40, 17, 99]
 
 export function mergeSort(arr){ // Main fn to return sorted array
     if (arr.length <= 1){ // If the passed array's length is one or less, return array
@@ -8,7 +8,7 @@ export function mergeSort(arr){ // Main fn to return sorted array
     return merge(mergeSort(left), mergeSort(arr)) // Recursively call main fn inside merge fn
 }
 
-function merge(a, b){ // Fn takes two arrays
+export function merge(a, b){ // Fn takes two arrays
     let result = [] 
     while(a.length > 0 && b.length > 0) { // As long as there are elements in the array 
         if (a[0] < b[0]){ // Compare the first array elements
@@ -20,5 +20,3 @@ function merge(a, b){ // Fn takes two arrays
     return [...result, ...a, ...b] // Return result array but also check if there are remainders
     //and add them to the end of result array
 }
-
-console.log(mergeSort(array))

@@ -1,4 +1,5 @@
-import "./linkedList.js";
-import "./mergesort.js";
-import "./recursion.js";
-import "./style.css";
+import "./linkedList.js"
+import "./mergesort.js"
+import "./recursion.js"
+import "./style.css"
+import "./binary-trees.js"
