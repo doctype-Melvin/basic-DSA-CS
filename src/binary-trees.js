@@ -12,34 +12,78 @@ const Tree = (array) => { //Module that holds all BST methods
     let newNode = makeNode(key)
     if (root === null) {
       root = newNode
-    }else {
+    }else{
       insertNode(root, newNode)
     }
+  }
 
   function insertNode(root, newNode){
     if (newNode.key < root.key) {
       if (root.left === null) {
         root.left = newNode
-      }else {
+      }else{
         insertNode(root.left, newNode)
       }
     }
     if (newNode.key > root.key) {
       if (root.right === null) {
         root.right = newNode
-      }else {
+      }else{
         insertNode(root.right, newNode)
       }
     }
   }
+
+  function remove(key){
+    root = removeNode(root, key)
   }
+
+  function removeNode(root, key) {
+    if (root === null) return null
+    if (key < root.key) { // Move left if key is less than root key
+      root.left = removeNode(root.left, key)
+      return root
+    }
+    if (key > root.key) { // Move right if key is greater than root key
+      root.right = removeNode(root.right, key)
+      return root
+    }
+    if (root.left === null && root.right === null) { // Both children are null -- no children
+      root = null
+      return root
+    }
+    if (root.left === null) { // node has one child to the right
+      root = root.right
+      return root
+    }
+    if (root.right === null) { // node has one child to the left
+      root = root.left
+      return root
+    }
+    let aux = minNode(root.right) // Something with two children minimum node of right subtree
+    root.key = aux.key
+
+    root.right = removeNode(root.right, aux.key)
+    return root
+  }
+
+    function minNode(root){
+      if (root.left === null) {
+        return root
+      }else return minNode(root.left)
+    }
+  
   return {
-    get value(){return root},
-    insert
+    get root(){return root},
+    insert,
+    remove
   }
 }
 
 let a = Tree()
-console.log(a.insert(8))
-console.log(a.value())
-
+a.insert(8)
+a.insert(10)
+a.insert(7)
+a.remove(8)
+console.log(a.root)
+console.log(prettyPrint(a.root))
