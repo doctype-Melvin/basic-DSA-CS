@@ -1,6 +1,7 @@
 import { buildTree } from "./buildTree.js"
 import { makeNode } from "./makeNode.js"
 import { mergeSort, merge } from "./mergesort.js"
+import { levelOrder } from "./order.js"
 import { prettyPrint } from "./printTree.js"
 
 
@@ -72,11 +73,29 @@ const Tree = (array) => { //Module that holds all BST methods
         return root
       }else return minNode(root.left)
     }
-  
-  return {
-    get root(){return root},
-    insert,
-    remove
+
+    function find(node, key){
+        if(node === null){
+        return null
+      }
+      if (key < node.key){
+        return find(node.left, key)
+      }
+      if (key > node.key){
+        return find(node.right, key)
+      }
+      return node
+    }
+
+    function getRoot(){
+      return root
+    }
+    
+    return {
+      insert,
+      remove,
+      find,
+      getRoot
   }
 }
 
@@ -85,5 +104,6 @@ a.insert(8)
 a.insert(10)
 a.insert(7)
 a.remove(8)
-console.log(a.root)
-console.log(prettyPrint(a.root))
+console.log(a.getRoot())
+console.log(a.find(a.getRoot(), 8))
+console.log(levelOrder(a.getRoot())
