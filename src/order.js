@@ -37,3 +37,56 @@ export function levelOrderRec(array, queue) { // Recursion for level order trave
         return levelOrderRec(array, queue)
     }
 }
+
+export function inorder(node, cb){
+    let order = []
+    if (!node) return
+    else if(cb){
+        return inorderRec(node, order).map(item => cb(item))
+    }else{
+        return inorderRec(node, order)
+    }
+}
+
+function inorderRec(node, array){
+    if(!node) return 
+    if(node){
+        inorderRec(node.left, array)
+        array.push(node.key)
+        inorderRec(node.right, array)
+    }
+    return array
+}
+//////////////////////////////////////////// Make traversal fn that takes a direction as argument
+export function order(dir, node, cb){
+    let order = []
+    if (!node || !dir) return
+    else if (cb) {
+        return orderRec(dir, node, order).map(item => cb(item))
+    }else{
+        return orderRec(dir, node, order)
+    }
+}
+
+function orderRec(dir, node, array){
+    if (dir = 'in') {
+        if (node) {
+            orderRec(node.left, array)
+            array.push(node.key)
+            orderRec(node.right, array)
+        }
+    }else if (dir = 'pre') {
+        if (node) {
+            array.push(node.key)
+            orderRec(node.left, array)
+            orderRec(node.right, array)
+        }
+    }else if (dir = 'post') {
+        if (node) {
+            orderRec(node.left, array)
+            orderRec(node.right, array)
+            array.push(node.key)
+        }
+    }
+    return array
+}
