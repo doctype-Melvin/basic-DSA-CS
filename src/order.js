@@ -1,4 +1,4 @@
-export function levelOrder(root) {
+export function levelOrder(root, cb) {
 let queue = []
 let temp = [root]
 if (!root) return queue
@@ -6,15 +6,22 @@ while (temp.length !== 0){
     let current = temp.pop()
     if (current.left) temp.unshift(current.left)
     if (current.right) temp.unshift(current.right)
-    queue.push(current.key)
+    if (!cb) {
+        queue.push(current.key)
+    }else {
+        queue.push(cb(current.key))
+    }
 }
 return queue
 }
 
-export function BFT(root) { // Setup for recursive call
+export function BFT(root, cb) { // Setup for recursive call
     let queue = []
     let temp = [root]
     if (!root) return queue
+    else if(cb){
+        return (levelOrderRec(temp, queue)).map(item => cb(item))
+    }
     else{
        return levelOrderRec(temp, queue)
     }
