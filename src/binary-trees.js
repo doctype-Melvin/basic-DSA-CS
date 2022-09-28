@@ -1,7 +1,7 @@
 import { buildTree } from "./buildTree.js"
 import { makeNode } from "./makeNode.js"
 import { mergeSort, merge } from "./mergesort.js"
-import { levelOrder } from "./order.js"
+import { BFT, levelOrder } from "./order.js"
 import { prettyPrint } from "./printTree.js"
 
 
@@ -99,11 +99,5 @@ const Tree = (array) => { //Module that holds all BST methods
   }
 }
 
-let a = Tree()
-a.insert(8)
-a.insert(10)
-a.insert(7)
-a.remove(8)
-console.log(a.getRoot())
-console.log(a.find(a.getRoot(), 8))
-console.log(levelOrder(a.getRoot())
+let a = Tree([1, 3, 4, 5, 7, 8, 12, 15])
+
