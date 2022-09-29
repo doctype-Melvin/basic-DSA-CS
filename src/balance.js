@@ -17,3 +17,18 @@ export function depth(root, node, dist = -1){
     }
     return dist
 }
+
+export function isBalanced(root){
+    let result
+    let left = root.left
+    let right = root.right
+    left = height(left)
+    right = height(right)
+    if (left < right) {
+        result = right - left
+    }
+    if (right < left) {
+        result = left - right
+    }
+    return (result > 1) ? false : true
+}
