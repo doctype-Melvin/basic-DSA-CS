@@ -6,7 +6,7 @@ import { BFT, levelOrder, order } from "./order.js"
 import { prettyPrint } from "./printTree.js"
 
 
-const Tree = (array) => { //Module that holds all BST methods
+export const Tree = (array) => { //Module that holds all BST methods
   let root = null // Initialize root variable -- null if there's no array
   if (array) root = buildTree(array, 0, array.length - 1) // If an array is passed, create tree
   
@@ -91,21 +91,41 @@ const Tree = (array) => { //Module that holds all BST methods
     function getRoot(){
       return root
     }
+
+    function reBalance(root = getRoot()){
+      let arr = order('in', root)
+      return Tree(arr)
+    }
     
     return {
       insert,
       remove,
       find,
-      getRoot
+      getRoot,
+      reBalance
   }
 }
 
-let a = Tree([1, 3, 4, 5, 7, 8, 12, 15])
-const times2 = (value) => value*2
+let array = makeRandom(5)
+let a = Tree(array)
+a.insert(1)
+a.insert(3)
+a.insert(5)
 prettyPrint(a.getRoot())
-// console.log(depth(a.getRoot(), 4))
-console.log(isBalanced(a.getRoot()))
-// console.log(height(a.getRoot()))
-// console.log(order('in', a.getRoot()))
-// console.log(order('pre', a.getRoot()))
-// console.log(order('post', a.getRoot()))
+a = a.reBalance()
+prettyPrint(a.getRoot())
+
+const times2 = (value) => value*2
+
+function makeRandom(n){ // Creates sorted array of unique values
+  let array = []
+  while (array.length < n){
+    let max = 666
+    let min = 11
+    array.push(Math.floor(Math.random()*(Math.random() * (max - min) + min)))
+  }
+  let sorted = mergeSort(array)
+  return sorted.filter((item, index) => {
+    return sorted.indexOf(item) === index
+  })
+}

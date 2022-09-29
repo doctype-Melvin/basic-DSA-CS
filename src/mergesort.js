@@ -1,5 +1,3 @@
-// const array = [211, 4, 5, 29, 57, 40, 17, 99]
-
 export function mergeSort(arr){ // Main fn to return sorted array
     if (arr.length <= 1){ // If the passed array's length is one or less, return array
         return arr

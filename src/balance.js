@@ -1,3 +1,6 @@
+import { Tree } from "./binary-trees.js"
+import { buildTree } from "./buildTree.js"
+
 export function height(root){
     if (!root) return -1
     let left = height(root.left)
