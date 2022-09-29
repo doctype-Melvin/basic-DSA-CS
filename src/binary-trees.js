@@ -102,4 +102,7 @@ const Tree = (array) => { //Module that holds all BST methods
 let a = Tree([1, 3, 4, 5, 7, 8, 12, 15])
 const times2 = (value) => value*2
 prettyPrint(a.getRoot())
-console.log(inorder(a.getRoot()))
+// console.log(inorder(a.getRoot()))
+console.log(order('in', a.getRoot()))
+console.log(order('pre', a.getRoot()))
+console.log(order('post', a.getRoot()))
