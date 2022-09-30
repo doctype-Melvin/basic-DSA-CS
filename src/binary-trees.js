@@ -106,14 +106,14 @@ export const Tree = (array) => { //Module that holds all BST methods
   }
 }
 
-let array = makeRandom(5)
-let a = Tree(array)
-a.insert(1)
-a.insert(3)
-a.insert(5)
-prettyPrint(a.getRoot())
-a = a.reBalance()
-prettyPrint(a.getRoot())
+// let array = makeRandom(5)
+// let a = Tree(array)
+// a.insert(1)
+// a.insert(3)
+// a.insert(5)
+// prettyPrint(a.getRoot())
+// a = a.reBalance()
+// prettyPrint(a.getRoot())
 
 const times2 = (value) => value*2
 

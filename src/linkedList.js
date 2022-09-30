@@ -1,4 +1,4 @@
-const linkedList = () => { // Factory function to create lists
+export const linkedList = () => { // Factory function to create lists
     let head = null // Start of the list - will become first node
     let length = 0 // Variable to track list length
     
@@ -195,13 +195,13 @@ const linkedList = () => { // Factory function to create lists
     }
 }
 
-let list = linkedList()
-list.append("One")
-list.append("Two")
-list.prepend("Zero")
-list.insertAt("Three", 3)
-list.size()
-list.toString()
-list.removeAt(2)
-list.toString()
-list.size()
+// let list = linkedList()
+// list.append("One")
+// list.append("Two")
+// list.prepend("Zero")
+// list.insertAt("Three", 3)
+// list.size()
+// list.toString()
+// list.removeAt(2)
+// list.toString()
+// list.size()

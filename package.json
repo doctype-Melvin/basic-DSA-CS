@@ -1,7 +1,7 @@
 {
   "name": "basic-ds-algo",
   "version": "1.0.0",
-  "description": "",
+  "description": "linked lists and binary search trees",
   "private": true,
   "type": "module",
   "scripts": {
