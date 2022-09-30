@@ -4,6 +4,15 @@
     box-sizing: border-box;
 }
 
+:root{
+    --bg-color: #010101;
+    --main-color: #1FC742;
+    --darker-shade: #025B18;
+    --darkest-shade: #023612;
+    --contrast: #686868;
+
+}
+
 html, body {
     font-family: 'Share Tech Mono', monospace;
     height: 100vh;
@@ -47,9 +56,30 @@ label {
     display: flex;
 }
 
+button {
+    font-family: inherit;
+}
+
+#right {
+    min-width: 93vw;
+    min-height: 35vh;
+    background-color: var(--bg-color);
+    color: var(--main-color);
+    padding: 5px;
+}
 
 @media only screen and (min-width: 500px) {
     .display {
         flex-direction: row;
+        width: 90vw;
+        justify-content: space-around;
+    }
+    
+    #right {
+        min-width: 45vw;
+        min-height: 35vh;
+        background-color: var(--bg-color);
+        color: var(--main-color);
+        padding: 5px;
     }
 }
