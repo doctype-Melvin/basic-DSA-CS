@@ -14,26 +14,53 @@ const linkedListApp = (() => {
     const printBtn = document.getElementById('printList')
 
         //Input fields
-    const headIn = document.getElementById('head')
     const append = document.getElementById('append')
     const prepend = document.getElementById('prepend')
     const atIndex = document.getElementById('atIndex')
     const contains = document.getElementById('contains')
-
+        //Form element -- empty input elements on load
+    const listForm = document.getElementById('listForm')
+    listForm.reset()
         //Output section
     const listOutput = document.getElementById('listOutput')
 
         //App logic
     let list = linkedList() // Initialize new linkedList instance
+    
     appendBtn.addEventListener('click', () => {
-        if (!headIn.value) {
-            listOutput.textContent = 'Please enter a number'
-        }else if(headIn.value){
-            list.append(parseInt(headIn.value))
-            listOutput.textContent = list.toString()          
+        if (!append.value) {
+            listOutput.textContent = 'Please enter a valid value'
+        }else if(append.value){
+            list.append(append.value)
+            listOutput.textContent = list.toString()
+            listForm.reset()       
         }
     })
 
+    prependBtn.addEventListener('click', () => {
+        if (!prepend.value) {
+            listOutput.textContent = 'Please enter a valid value'
+        }else if (prepend.value){
+            list.prepend(prepend.value)
+            listOutput.textContent = list.toString()
+            listForm.reset()
+        }
+    })
+
+    atIndex.addEventListener('click', () => {
+        if (!atIndex.value) {
+            listOutput.textContent = 'Please enter a valid value'
+        }else {
+           
+           let listPrint = list.toString()
+           let node = list.atIndex(atIndex.value).value
+           let output = `${listPrint} 
+           ${node}`
+        //    console.log(output)
+           listOutput.textContent = output
+           listForm.reset() 
+        }
+    })
 })()
 
 const binarySearchTreeApp = (() => {
