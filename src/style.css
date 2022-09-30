@@ -8,4 +8,34 @@ html, body {
     padding: 0;
     margin: 0;
     font-family: 'Share Tech Mono', monospace;
+    height: 100vh;
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+h1 {
+    text-align: center;
+}
+
+.container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.display {
+    display: flex;
+    flex-direction: column;
+}
+
+@media only screen and (min-width: 500px) {
+    .display {
+        flex-direction: row;
+    }
 }
