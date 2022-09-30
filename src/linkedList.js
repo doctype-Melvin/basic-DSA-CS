@@ -125,7 +125,7 @@ export const linkedList = () => { // Factory function to create lists
                 string += `(${currentNode.value}) -> `
                 currentNode = currentNode.next
             }
-            console.log(string + "null")
+            // console.log(string + "null")
             return string + "null"
         }
     }
@@ -191,7 +191,8 @@ export const linkedList = () => { // Factory function to create lists
         find,
         toString,
         insertAt,
-        removeAt
+        removeAt,
+        head
     }
 }
 

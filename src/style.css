@@ -27,6 +27,7 @@ body {
     align-items: center;
 }
 
+/* Main contains both apps */
 .main {
     height: 100vh;
 }
@@ -35,6 +36,7 @@ h1 {
     text-align: center;
 }
 
+/* Container is set to contain the header, form and output elements for each app */
 .container {
     display: flex;
     flex-direction: column;
@@ -42,6 +44,7 @@ h1 {
     align-items: center;
 }
 
+/* Display is the parent of form and output element */
 .display {
     display: flex;
     flex-direction: column;
@@ -60,6 +63,7 @@ button {
     font-family: inherit;
 }
 
+/* Graphical output fields */
 #listOutput, #treeOutput {
     min-width: 93vw;
     min-height: 35vh;
@@ -67,8 +71,8 @@ button {
     color: var(--main-color);
     padding: 5px;
 }
-
-@keyframes blink {
+/* Create initial blinking caret animation in graphic output field*/
+@keyframes blink { 
     0% {opacity: 1;}
     100% {opacity: 0;}
 }
@@ -79,6 +83,7 @@ button {
     animation-iteration-count: infinite;
 }
 
+/* Desktop media queries */
 @media only screen and (min-width: 500px) {
     .display {
         flex-direction: row;

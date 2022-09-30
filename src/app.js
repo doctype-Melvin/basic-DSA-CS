@@ -3,7 +3,6 @@ import { linkedList } from "./linkedList.js"
 const linkedListApp = (() => {
     // Linked List form controls and graphic output
         //Buttons
-    const headBtn = document.getElementById('setHead')
     const appendBtn = document.getElementById('push')
     const prependBtn = document.getElementById('unshift')
     const indexBtn = document.getElementById('index')
@@ -15,7 +14,7 @@ const linkedListApp = (() => {
     const printBtn = document.getElementById('printList')
 
         //Input fields
-    const head = document.getElementById('head')
+    const headIn = document.getElementById('head')
     const append = document.getElementById('append')
     const prepend = document.getElementById('prepend')
     const atIndex = document.getElementById('atIndex')
@@ -26,9 +25,12 @@ const linkedListApp = (() => {
 
         //App logic
     let list = linkedList() // Initialize new linkedList instance
-    headBtn.addEventListener('click', () => {
-        if (!head.value) {
+    appendBtn.addEventListener('click', () => {
+        if (!headIn.value) {
             listOutput.textContent = 'Please enter a number'
+        }else if(headIn.value){
+            list.append(parseInt(headIn.value))
+            listOutput.textContent = list.toString()          
         }
     })
 
