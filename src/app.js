@@ -1,5 +1,7 @@
-const app = (() => {
-    // Linked List form controls
+import { linkedList } from "./linkedList.js"
+
+const linkedListApp = (() => {
+    // Linked List form controls and graphic output
         //Buttons
     const headBtn = document.getElementById('setHead')
     const appendBtn = document.getElementById('push')
@@ -21,5 +23,17 @@ const app = (() => {
 
         //Output section
     const listOutput = document.getElementById('listOutput')
-    
+
+        //App logic
+    let list = linkedList() // Initialize new linkedList instance
+    headBtn.addEventListener('click', () => {
+        if (!head.value) {
+            listOutput.textContent = 'Please enter a number'
+        }
+    })
+
+})()
+
+const binarySearchTreeApp = (() => {
+    console.log('bst')
 })()

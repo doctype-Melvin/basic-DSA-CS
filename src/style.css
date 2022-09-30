@@ -60,12 +60,23 @@ button {
     font-family: inherit;
 }
 
-#right {
+#listOutput, #treeOutput {
     min-width: 93vw;
     min-height: 35vh;
     background-color: var(--bg-color);
     color: var(--main-color);
     padding: 5px;
+}
+
+@keyframes blink {
+    0% {opacity: 1;}
+    100% {opacity: 0;}
+}
+
+.caret {
+    animation-name: blink;
+    animation-duration: 1.2s;
+    animation-iteration-count: infinite;
 }
 
 @media only screen and (min-width: 500px) {
