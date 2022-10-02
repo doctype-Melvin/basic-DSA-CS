@@ -28,7 +28,7 @@ export function fib(n) { // Returns Fibonacci number at position n in sequence
     let sequence = []
     return n <= 1 ? n : fib(n-1) + fib(n-2)    
 }
-console.log(fib(10))
+//console.log(fib(10))
 
 export function fibs1(n) {
     let result = [0, 1]; // First two numbers in sequence 

@@ -27,6 +27,20 @@ body {
     align-items: center;
 }
 
+footer {
+    padding: 5px 0;
+}
+
+footer a {
+    text-decoration: none;
+    color: var(--darkest-shade);
+}
+
+footer a:hover {
+    cursor: pointer;
+    color: var(--main-color);
+}
+
 /* Main contains both apps */
 .main {
     height: 100vh;
@@ -85,13 +99,14 @@ button {
 
 /* Desktop media queries */
 @media only screen and (min-width: 500px) {
+    
     .display {
         flex-direction: row;
-        width: 90vw;
+        width: 70vw;
         justify-content: space-around;
     }
     
-    #right {
+    #listOutput, #treeOutput {
         min-width: 45vw;
         min-height: 35vh;
         background-color: var(--bg-color);

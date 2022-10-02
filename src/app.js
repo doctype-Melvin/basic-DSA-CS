@@ -47,17 +47,19 @@ const linkedListApp = (() => {
         }
     })
 
+    const testDiv = document.createElement('div')
+    testDiv.textContent = 'Test Test'
+
     atIndex.addEventListener('click', () => {
         if (!atIndex.value) {
             listOutput.textContent = 'Please enter a valid value'
         }else {
-           
-           let listPrint = list.toString()
-           let node = list.atIndex(atIndex.value).value
-           let output = `${listPrint} 
-           ${node}`
+        //    let listPrint = list.toString()
+        //    let node = list.atIndex(atIndex.value).value
         //    console.log(output)
-           listOutput.textContent = output
+        //    listOutput.textContent = output
+        listOutput.textContent = list.toString()
+        listOutput.append(testDiv)
            listForm.reset() 
         }
     })
